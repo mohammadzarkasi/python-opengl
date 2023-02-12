@@ -10,6 +10,10 @@ class App:
 
         # init pygame
         pg.init()
+        pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 3)
+        pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 3)
+        pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
+
         pg.display.set_mode((640,480), pg.OPENGL | pg.DOUBLEBUF)
 
         self.clock = pg.time.Clock()
@@ -17,12 +21,15 @@ class App:
         # init open cl
         gl.glClearColor(0.1, 0.2, 0.2, 1)
 
+        # buat objek yg akan digambar
+        self.tr1 = Triangle()
+
         # aktifkan konfigurasi shader
         self.shader = self.create_shader()
         gl.glUseProgram(self.shader)
 
-        # buat objek yg akan digambar
-        self.tr1 = Triangle()
+        
+        
 
         self.mainLoop();
 
